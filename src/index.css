@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bungee+Shade&family=Golos+Text:wght@400;500&family=Noto+Sans+Cherokee:wght@300&display=swap");
+
+:root {
+    --fuente-principal: "Abril Fatface", cursive;
+    --fuente-secundaria: "Bungee Shade", cursive;
+    --fuente-terciario: "Golos Text", sans-serif;
+    --fuente-parrafo: "Noto Sans Cherokee", sans-serif;
+
+    --amarillo-claro: #ffba08;
+    --amarillo-oscuro: #f48c06;
+    --naranja: #dc2f02;
+    --rojo: #d00000;
+    --rojo-oscuro: #9d0208;
+    --negro: #03071e;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .gradient-primary {
+        @apply bg-gradient-to-r from-yellow-100 via-yellow-300 to-yellow-500;
+    }
+    .gradient-secondary {
+        @apply bg-gradient-to-r from-yellow-600 to-red-600;
+    }
+    .gradient-ter {
+        @apply bg-gradient-to-r from-orange-400 to-rose-400
+    }
+}
+
+h1 {
+    font-family: var(--fuente-principal);
+}
+
+h2,
+h3 {
+    font-family: var(--fuente-terciario);
+}
+
+h4,
+p {
+    font-family: var(--fuente-parrafo);
+}
+
+.button {
+    padding: 0.8em 1.7em;
+    background-color: var(--negro);
+    border-radius: 0.3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--amarillo-oscuro);
+    z-index: 1;
+}
+
+.button::before,
+.button::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--naranja);
+    transition: 1s ease;
+}
+
+.button::before {
+    top: -1em;
+    left: -1em;
+}
+
+.button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.button:hover::before,
+.button:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button:hover {
+    color: var(--negro);
+}
+
+.button:active {
+    filter: brightness(0.8);
+}
