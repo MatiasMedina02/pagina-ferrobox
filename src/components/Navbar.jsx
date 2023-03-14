@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-scroll';
 import logoFerroBox from '../assets/ferrobox_logo.jpeg'
+import { BsSun } from 'react-icons/bs'
 
 const Navbar = () => {
 	let links = [
@@ -12,12 +13,20 @@ const Navbar = () => {
 	let [open, setOpen] = useState(false);
 	return (
 		<div className='w-full shadow-md fixed z-10 top-0 left-0'>
-			<div className='md:flex items-center justify-between gradient-primary py-4 px-7 md:px-10 '>
-					<div className='w-[80px] h-[80px]'>
-						<img className='cursor-pointer' src={logoFerroBox} alt="Logo FerroBox" />
+			<div className='flex items-center justify-between gradient-primary py-4 px-7 md:px-10'>
+					<div className='w-[60px] h-[60px]'>
+						<Link to='inicio' onClick={() => setOpen(!open)} smooth={true} duration={500} offset={-100}>
+							<img className='cursor-pointer' src={logoFerroBox} alt="Logo FerroBox" />
+						</Link>
 					</div>
 
-					<div onClick={() => setOpen(!open)} className='text-3xl absolute right-8 top-10 cursor-pointer md:hidden'>
+					<div>
+						<button className=''>
+							<BsSun size={25} />
+						</button>
+					</div>
+
+					<div onClick={() => setOpen(!open)} className='text-3xl right-8 top-8 cursor-pointer md:hidden'>
 						<ion-icon name={open ? 'close' : 'menu'}></ion-icon>
 					</div>
 
@@ -26,7 +35,7 @@ const Navbar = () => {
 						{
 							links.map(link => (
 								<li key={link.name} className="md:ml-8 text-xl md:my-0 my-7 pb-2 last-of-type:my-0 border-b border-black md:border-none">
-									<Link to={link.name} smooth={true} duration={500} offset={-100} className="text-gray-800 hover:text-gray-100 duration-500 uppercase cursor-pointer">{link.name}</Link>
+									<Link to={link.name} smooth={true} duration={500} offset={-100} onClick={() => setOpen(!open)} className="text-gray-800 hover:text-gray-100 duration-500 uppercase cursor-pointer">{link.name}</Link>
 								</li>
 							))
 						}

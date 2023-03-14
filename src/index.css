@@ -26,7 +26,15 @@
         @apply bg-gradient-to-r from-yellow-600 to-red-600;
     }
     .gradient-ter {
-        @apply bg-gradient-to-r from-orange-400 to-rose-400
+        @apply bg-gradient-to-r from-orange-400 to-rose-400;
+    }
+
+    /* Planes */
+    .precio-planes {
+        @apply text-4xl font-bold mb-6 text-indigo-500;
+    }
+    .lista-planes {
+        @apply text-lg mb-2 pb-2 border-b-2 border-yellow-200 text-yellow-500;
     }
 }
 
